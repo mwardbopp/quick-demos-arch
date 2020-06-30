@@ -2,10 +2,21 @@
 #------------------------------------------------------------------------------
 # Start tasks
 #------------------------------------------------------------------------------
+  - name: DEBUG_TEST
+    debug:
+      msg: "{{vars}}"
+
+  - name: DEBUG_instance_info
+    ec2_instance_info:
+    register: instance_info_debug
+
+  - name: DEBUG_TEST
+    debug:
+      msg: "{{instance_info_debug}}"
 
 
   - name: GET VPC INFO
-    ec2_vpc_net_facts:
+    ec2_vpc_net_info:
       filters:
         "tag:Name": "{{ vpc_name }}"
         "tag:UK-SE": "{{ uk_se_name }}"
@@ -14,7 +25,8 @@
 
   - name: DEBUG VPC
     debug:
-      msg: "{{ vpc_info.vpcs[0].vpc_id }}"
+  #    msg: "{{ vpc_info.vpcs[0].vpc_id }}"
+      msg: "{{ vpc_info }}"
 
 
   - name: GET PRIVATE SUBNET INFO

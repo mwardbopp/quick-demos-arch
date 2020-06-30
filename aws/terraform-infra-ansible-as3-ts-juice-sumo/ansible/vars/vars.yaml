@@ -8,16 +8,16 @@
 #------------------------------------------------------------------------------
 
 # DEFINE UK SE NAME FOR USE IN TAGS
-uk_se_name: arch
+uk_se_name: wardbopp
 
 # DEFINE AWS REGION
-aws_region: eu-west-2
+aws_region: eu-west-1
 
 # DEFINE SSH KEY (AS NAMED IN AWS) FOR AWS AMI BUILD
-sshKey: "arch_id_rsa"
+sshKey: "wardbopp"
 
 # DEFINE SSH KEY (LOCAL PATH) FOR AWS AMI BUILD
-ssh_key_file_path: "~/.ssh/id_rsa"
+ssh_key_file_path: "~/.ssh/wardbopp"
 
 # DEFINE APP SERVER NAME 
 app_name: "{{ uk_se_name }}-juice-shop-{{ centos_app_id }}"
@@ -26,7 +26,7 @@ app_name: "{{ uk_se_name }}-juice-shop-{{ centos_app_id }}"
 elastic_name: "{{ uk_se_name }}-elasticstack-{{ centos_app_id }}"
 
 # DEFINE VPC NAME 
-vpc_name: "arch-sumo-demo-tf"
+vpc_name: "wardbopp-sumo-demo-tf"
 
 #------------------------------------------------------------------------------
 ...

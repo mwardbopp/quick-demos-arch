@@ -37,7 +37,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "mgmt" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = "eu-west-2a"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "mgmt"
@@ -50,7 +50,7 @@ resource "aws_subnet" "mgmt" {
 resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.2.0/24"
-  availability_zone = "eu-west-2a"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "public"
@@ -63,7 +63,7 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.3.0/24"
-  availability_zone = "eu-west-2a"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "private"
@@ -97,7 +97,7 @@ resource "aws_security_group" "mgmt" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "arch-mgmt"
+    Name = "wardbopp-mgmt"
     UK-SE = var.uk_se_name
   }
 }
@@ -128,7 +128,7 @@ resource "aws_security_group" "public" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "arch-public"
+    Name = "wardbopp-public"
     UK-SE = var.uk_se_name
   }
 }
@@ -171,7 +171,7 @@ resource "aws_security_group" "private" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "arch-private"
+    Name = "wardbopp-private"
     UK-SE = var.uk_se_name
   }
 }
@@ -230,10 +230,10 @@ module bigip {
   source = "f5devcentral/bigip/aws"
   version = "0.1.2"
 
-  prefix            = "arch-bigip-"
+  prefix            = "wardbopp-bigip-"
   f5_instance_count = 1
   ec2_key_name      = var.sshkey
-  aws_secretmanager_secret_id = "my_bigip_password"
+  aws_secretmanager_secret_id = "wardbopp-secret"
   mgmt_subnet_security_group_ids = [aws_security_group.mgmt.id]
   public_subnet_security_group_ids = [aws_security_group.public.id]
   vpc_mgmt_subnet_ids = [aws_subnet.mgmt.id]

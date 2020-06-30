@@ -7,25 +7,25 @@
 #
 # Set Var for curent TS file name
 
-#  - name: RETRIEVE TS VERSION FROM FILE
-#    find:
-#      paths: ../files/
-#      patterns: "f5-telemetry*.rpm" 
-#    register: tsrpm
-#    delegate_to: localhost
+  # - name: RETRIEVE TS VERSION FROM FILE
+  #   find:
+  #     paths: ../files/
+  #     patterns: "f5-telemetry*.rpm" 
+  #   register: tsrpm
+  #   delegate_to: localhost
 
       
-#  - name: INSTALL TS
-#    bigip_lx_package:
-#      provider:
-#        server: "{{ inventory_hostname }}"
-#        user: "{{ bigip_user }}"
-#        password: "{{ aws_secret }}"
-#        ssh_keyfile: "{{ ssh_key_file_path }}"
-#        validate_certs: no
-#        server_port: 443
-#      package: "{{ tsrpm.files[0].path }}"
-#    delegate_to: localhost
+  # - name: INSTALL TS
+  #   bigip_lx_package:
+  #     provider:
+  #       server: "{{ inventory_hostname }}"
+  #       user: "{{ bigip_user }}"
+  #       password: "{{ aws_secret }}"
+  #       ssh_keyfile: "{{ ssh_key_file_path }}"
+  #       validate_certs: no
+  #       server_port: 443
+  #     package: "../files/f5-telemetry-1.7.0-1.noarch.rpm"
+  #   delegate_to: localhost
 
 
   - name: WAIT FOR TS API (204 or 200 WHEN DECLARATION EXISTS)

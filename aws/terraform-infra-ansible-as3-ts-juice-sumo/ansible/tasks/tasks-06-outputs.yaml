@@ -16,13 +16,13 @@
 
 - name: SEND NOTIFICATION TO SLACK
   slack:
-    token: TQJGFGSVD/BR2D7AN06/2Bsc8hKCUlokflbqPDiKAzLP
+    token: T027HQ9B9/B0163QPAM9U/bGPPHjHp9djzuLzm67NUTuQm
     attachments:
       - text: 'You should now be able to login to the demo deployment\n'
         color: '#36a64f'
         pretext: Ansible Automation Notification
         title: Deployment Complete
-        author_name: "Stephen Archer"
+        author_name: "Mark Ward-Bopp"
         author_icon: 'https://www.f5.com/etc.clientlibs/base/clientlibs/base-resources/resources/logos/favicon-32x32.png'
         fields:
           - title: OWASP Juice Shop App Link

@@ -6,7 +6,7 @@
 
 # Bug in Ansible 'aws_secret' module, so using AWS CLI command instead
 - name: GET PASSWORD FROM AWS SECRET STORE
-  shell: "aws secretsmanager get-secret-value --secret-id my_bigip_password"
+  shell: "aws secretsmanager get-secret-value --secret-id wardbopp-secret"
   register: aws_secret
   delegate_to: localhost
 

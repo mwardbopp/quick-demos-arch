@@ -115,6 +115,12 @@ resource "aws_security_group" "public" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+    ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
   ingress {
     from_port   = 443
     to_port     = 443
@@ -149,6 +155,12 @@ resource "aws_security_group" "private" {
   ingress {
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -239,7 +251,7 @@ module bigip {
   vpc_mgmt_subnet_ids = [aws_subnet.mgmt.id]
   vpc_public_subnet_ids = [aws_subnet.public.id]
   # NEED TO ADD BELOW TO REPLACE DEFAULT IN MODULE
-  f5_ami_search_name = "F5*BIGIP-14.1.2.3* PAYG-Best 200Mbps*"
+  f5_ami_search_name = "F5 BIGIP-15.1.0.2-0.0.9 PAYG-Adv WAF 200Mbps*"
 
 }
 

@@ -11,7 +11,7 @@
 - name: GET CENTOS AMI FACTS
   ec2_instance_facts:
     filters:
-      "tag:Name": "{{ uk_se_name }}-juice-shop"
+      "tag:Name": "{{ uk_se_name }}-juice-shop-non-docker"
       "tag:UK-SE": "{{ uk_se_name }}"
   register: centos_facts
 
